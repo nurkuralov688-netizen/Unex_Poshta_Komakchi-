@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Unex Express — Xalqaro va hududiy yuk tashish xizmati</title>
+<style>
+:root{--bg:#fff;--bg2:#f6f6f7;--tx:#111;--mu:#5c5c66;--ln:#e5e5e8;--cd:#fff;--red:#e31e24;--red2:#b5121a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0e10;--bg2:#17171a;--tx:#f4f4f5;--mu:#a1a1aa;--ln:#2a2a2f;--cd:#1b1b1f}}
+:root[data-theme="dark"]{--bg:#0e0e10;--bg2:#17171a;--tx:#f4f4f5;--mu:#a1a1aa;--ln:#2a2a2f;--cd:#1b1b1f}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font:16px/1.5 "Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--tx);overflow-x:hidden}
+.w{max-width:1100px;margin:auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--tx);text-decoration:none}.logo b{color:var(--red)}
+.lg{width:34px;height:34px;border-radius:9px;background:var(--red);display:grid;place-items:center}
+nav a{margin-left:20px;color:var(--tx);text-decoration:none;font-weight:600;font-size:14px}nav a:hover{color:var(--red)}
+.btn{display:inline-block;background:var(--red);color:#fff!important;padding:13px 24px;border-radius:12px;font-weight:700;border:0;cursor:pointer;transition:.2s;text-decoration:none;font-size:15px}
+.btn:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 8px 22px #e31e2466}
+.btn.gh{background:transparent;border:2px solid #fff}.btn.gh:hover{background:#fff2;box-shadow:none}
+nav .btn{padding:9px 16px}
+@media(max-width:700px){nav a:not(.btn){display:none}}
+.hero{background:radial-gradient(circle at 80% 20%,#e31e2488,transparent 55%),#111;color:#fff;padding:70px 0 0;overflow:hidden}
+.hero h1{font-size:clamp(34px,6vw,64px);line-height:1.08;font-weight:800;max-width:760px}.hero h1 em{color:var(--red);font-style:normal}
+.hero p{margin:18px 0 28px;font-size:18px;color:#d4d4d8;max-width:560px}
+.hero .w>div{display:flex;gap:14px;flex-wrap:wrap}
+.road{position:relative;height:90px;margin-top:40px;border-bottom:6px solid #333}
+.road:after{content:"";position:absolute;left:0;right:0;bottom:-3px;border-top:3px dashed #888;animation:rd 1s linear infinite}
+.truck{position:absolute;bottom:6px;left:-220px;width:200px;animation:drive 9s linear infinite}
+@keyframes drive{to{left:100%}}@keyframes rd{to{transform:translateX(-24px)}}
+.sec{padding:80px 0}.alt{background:var(--bg2)}
+h2{font-size:clamp(26px,4vw,38px);font-weight:800;margin-bottom:8px}h2:after{content:"";display:block;width:60px;height:5px;background:var(--red);border-radius:3px;margin-top:10px}
+.sub{color:var(--mu);margin:14px 0 32px;max-width:620px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+.g2{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}@media(max-width:820px){.g2{grid-template-columns:1fr}}
+.card{background:var(--cd);border:1px solid var(--ln);border-radius:20px;padding:26px}
+label{display:block;font-weight:700;font-size:13px;margin:16px 0 6px;color:var(--mu);text-transform:uppercase;letter-spacing:.04em}label:first-child{margin-top:0}
+select,input{width:100%;padding:13px 14px;border-radius:12px;border:2px solid var(--ln);background:var(--bg);color:var(--tx);font:inherit}select:focus,input:focus{outline:0;border-color:var(--red)}
+.st{display:flex;gap:8px}.st button{width:50px;border:2px solid var(--ln);background:var(--bg);color:var(--tx);border-radius:12px;font-size:22px;cursor:pointer;transition:.2s}.st button:hover{border-color:var(--red);color:var(--red)}.st input{text-align:center;font-weight:700}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}.seg button{padding:12px;border:2px solid var(--ln);background:var(--bg);color:var(--tx);border-radius:12px;font:inherit;font-weight:600;cursor:pointer;transition:.2s}.seg button.on{background:var(--red);border-color:var(--red);color:#fff}
+.res{margin-top:22px;background:#111;color:#fff;border-radius:16px;padding:22px;position:relative;overflow:hidden}
+.res:before{content:"";position:absolute;inset:auto -40px -40px auto;width:140px;height:140px;border-radius:50%;background:var(--red);opacity:.35}
+.res small{color:#a1a1aa}.res .tt{font-size:44px;font-weight:800;line-height:1.1}.res .tt span{font-size:18px;color:var(--red);margin-left:6px}
+.res ul{list-style:none;padding:0;margin-top:12px;font-size:14px;color:#d4d4d8;position:relative}.res li{display:flex;justify-content:space-between;padding:4px 0;border-top:1px solid #333}
+.pc{display:flex;gap:16px;align-items:center;margin-bottom:16px;transition:.25s}.pc:hover{transform:translateX(6px);border-color:var(--red)}
+.pc b{font-size:26px;color:var(--red);white-space:nowrap}.pc span{color:var(--mu);font-size:14px}.pc strong{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.chip{border:2px solid var(--ln);background:var(--cd);color:var(--tx);padding:9px 16px;border-radius:30px;font:inherit;font-weight:600;cursor:pointer;transition:.2s}.chip small{opacity:.6;margin-left:4px}.chip:hover{border-color:var(--red)}.chip.on{background:var(--red);border-color:var(--red);color:#fff}
+.pts{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.pt{display:flex;gap:8px;align-items:center;padding:16px;border-radius:14px;border:1px solid var(--ln);background:var(--cd);color:var(--tx);font:inherit;font-weight:600;cursor:pointer;text-align:left;opacity:0;animation:up .45s forwards;transition:.2s}.pt:hover{border-color:var(--red);transform:translateY(-3px);box-shadow:0 8px 20px #0002}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.mapbox{background:var(--cd);border:1px solid var(--ln);border-radius:24px;padding:10px}.mapbox svg{width:100%;height:auto;display:block}
+#rt{fill:none;stroke:var(--red);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1}.go #rt{animation:dash 5s ease forwards}@keyframes dash{to{stroke-dashoffset:0}}
+.out{fill:var(--bg2);stroke:var(--ln);stroke-width:2}
+.nd{opacity:0}.go .nd{animation:pop .5s var(--d) forwards}@keyframes pop{to{opacity:1}}
+.nd circle{fill:#fff;stroke:var(--red);stroke-width:3}.nd text{fill:var(--tx);font-size:11px;font-weight:600}
+.pulse{fill:none;stroke:var(--red);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:pl 2s infinite}@keyframes pl{from{transform:scale(1);opacity:.9}to{transform:scale(3.2);opacity:0}}
+.stat{background:var(--red);color:#fff;padding:70px 0}
+.big{text-align:center}.big .n{font-size:clamp(48px,11vw,110px);font-weight:800;line-height:1}.big p{font-size:18px;opacity:.92;margin-top:10px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;margin-top:44px;text-align:center}
+.row div{background:#0002;border-radius:16px;padding:18px}.row b{font-size:34px;display:block}.row i{font-style:normal;font-size:28px}.row span{font-size:14px}
+footer{background:#111;color:#d4d4d8;padding:40px 0;text-align:center}footer b{color:var(--red);font-size:20px;display:block;margin-bottom:6px}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.sg button{padding:12px;border:2px solid var(--ln);background:var(--bg);color:var(--tx);border-radius:12px;font:inherit;font-weight:600;cursor:pointer;transition:.2s}.sg button.on{background:var(--red);border-color:var(--red);color:#fff}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}h3{font-size:18px;margin-bottom:6px}
+.mk{cursor:pointer;text-align:left;font:inherit;color:var(--tx);transition:.25s}.mk:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 10px 24px #0002}.card p{color:var(--mu);font-size:14px;margin:4px 0}.card p b{color:var(--red)}
+.free{color:#16a34a;font-weight:800}.ls{display:flex;justify-content:space-between;padding:11px 0;border-top:1px solid var(--ln)}
+.btn.sc{background:var(--bg2);color:var(--tx)!important;border:2px solid var(--ln)}.btn.sc:hover{box-shadow:none;border-color:var(--red)}.btn{margin:4px 4px 0 0}
+.rad{width:90px;height:90px;margin:20px auto;border-radius:50%;background:var(--red);position:relative;display:grid;place-items:center;font-size:36px}.rad:before,.rad:after{content:"";position:absolute;inset:0;border-radius:50%;border:3px solid var(--red);animation:pl 1.6s infinite}.rad:after{animation-delay:.8s}
+.pill{font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--bg2);border:1px solid var(--ln)}.pill.n{background:var(--red);color:#fff;border-color:var(--red)}
+.or{border-top:1px solid var(--ln);padding:14px 0;display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;align-items:center}.or small{color:var(--mu);display:block}
+.mini{padding:7px 12px;border-radius:10px;border:2px solid var(--ln);background:var(--bg);color:var(--tx);font:inherit;font-size:13px;font-weight:600;cursor:pointer}.mini:hover{border-color:var(--red)}
+.ok{background:#16a34a22;border:1px solid #16a34a;border-radius:12px;padding:14px;margin:14px 0;white-space:pre-line}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}.truck{animation:none!important;left:40%}.road:after{animation:none!important}}
+</style>
+</head>
+<body>
+<header><div class="w nav">
+<a class="logo" href="#"><span class="lg"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h14M14 4l4 4-4 4M20 16H6M10 12l-4 4 4 4"/></svg></span>Unex <b>Express</b></a>
+<nav><a href="#tarif">Tarif</a><a href="#xizmat">Xizmatlar</a><a href="#kurer">Kurer</a><a href="#filial">Filiallar</a><a href="#kabinet">Kabinet</a><a class="btn" href="#tarif">Hisoblash</a></nav>
+</div></header>
+
+<section class="hero"><div class="w">
+<h1>Sizning yukingiz — bizning <em>mas'uliyatimiz!</em></h1>
+<p>Xalqaro va hududiy yuk tashish xizmati. O'zbekistonning barcha viloyatlariga xavfsiz va tezkor yetkazib beramiz.</p>
+<div><a class="btn" href="#tarif">Narxni hisoblash</a><a class="btn gh" href="#filial">Filiallarni ko'rish</a></div>
+</div>
+<div class="road"><svg class="truck" viewBox="0 0 200 80"><rect x="0" y="8" width="132" height="52" rx="4" fill="#e31e24"/><rect x="52" y="22" width="26" height="26" rx="6" fill="#fff"/><path d="M58 30h14M68 26l4 4-4 4M72 42H58M62 38l-4 4 4 4" stroke="#e31e24" stroke-width="2.5" fill="none"/><path d="M136 22h34l18 18v20h-52z" fill="#fff"/><path d="M144 28h22l10 11h-32z" fill="#1b2a3a"/><rect x="0" y="58" width="188" height="5" fill="#222"/><g fill="#222" stroke="#999" stroke-width="2"><circle cx="28" cy="66" r="9"/><circle cx="58" cy="66" r="9"/><circle cx="152" cy="66" r="9"/></g></svg></div>
+</section>
+
+<section class="sec" id="tarif"><div class="w">
+<h2 class="rv">Yetkazib berish narxi</h2>
+<p class="sub rv">Barcha filiallar uchun yagona tarif. Og'irlikni kiriting, narx darhol hisoblanadi.</p>
+<div class="g2">
+<div class="card rv">
+<label for="dst">Qaysi filialga</label><select id="dst"></select>
+<label for="kg">Og'irlik (kg)</label>
+<div class="st"><button id="m" aria-label="kamaytirish">−</button><input id="kg" type="number" min="1" step="any" value="1"><button id="p" aria-label="ko'paytirish">+</button></div>
+<label>Yetkazish turi</label>
+<div class="seg" style="grid-template-columns:repeat(auto-fit,minmax(130px,1fr))"><button class="on" data-d="0">Filialgacha</button><button data-d="1">Shahar ichiga dostavka +20 000</button><button data-d="2">Yashash tumanimgacha +20 000</button></div><label for="box">Karobkaga solib berish</label><select id="box"><option value="0">Kerak emas</option><option value="3000">1 lik karobka · 3 000</option><option value="5000">2 lik karobka · 5 000</option><option value="6000">3 lik karobka · 6 000</option><option value="8000">4 lik karobka · 8 000</option><option value="10000">5 lik karobka · 10 000</option></select>
+<div class="res"><small id="rt2"></small><div class="tt"><b id="tot">25 000</b><span>so'm</span></div><ul id="bd"></ul></div>
+</div>
+<div>
+<div class="card pc rv"><b>25 000</b><span><strong>1 kg uchun</strong>Barcha filiallarga bir xil</span></div>
+<div class="card pc rv"><b>+5 000</b><span><strong>Har qo'shimcha kg</strong>1 kg dan keyingi har bir kilogramm</span></div>
+<div class="card pc rv"><b>+20 000</b><span><strong>Shahar ichiga / yashash tumaningizgacha</strong>Ikkala dostavka turi uchun ham qo’shiladi</span></div>
+</div></div>
+</div></section>
+
+<section class="sec alt" id="filial"><div class="w">
+<h2 class="rv">Bizning filiallar</h2>
+<p class="sub rv">Hududni tanlang. Filialni bosing, narx hisoblagichda u avtomatik tanlanadi.</p>
+<div class="chips" id="chips"></div><div class="pts" id="pts"></div>
+</div></section>
+
+<section class="sec" id="xarita"><div class="w">
+<h2 class="rv">Yetkazib berish yo'nalishi</h2>
+<p class="sub rv">Toshkentdagi markazdan har bir viloyatga qizil yo'l chizig'i cho'zilgan.</p>
+<div class="mapbox"><svg viewBox="0 0 620 370" id="map" role="img" aria-label="Yetkazib berish xaritasi"></svg></div>
+</div></section>
+
+
+<section class="sec alt" id="xizmat"><div class="w">
+<h2 class="rv">Qo’shimcha xizmatlar</h2>
+<p class="sub rv">Karobkaga solib berish va kurer chaqirish narxlari.</p>
+<div class="g2">
+<div class="card rv"><h3>Pochta karobkasiga solib berish</h3>
+<div class="ls"><span>1 lik karobka</span><b>3 000 so’m</b></div><div class="ls"><span>2 lik karobka</span><b>5 000 so’m</b></div><div class="ls"><span>3 lik karobka</span><b>6 000 so’m</b></div><div class="ls"><span>4 lik karobka</span><b>8 000 so’m</b></div><div class="ls"><span>5 lik karobka</span><b>10 000 so’m</b></div></div>
+<div class="card rv"><h3>Kurer chaqirish</h3>
+<div class="ls"><span>Bozor ichida</span><b class="free">BEPUL</b></div><div class="ls"><span>Shahar ichiga</span><b>20 000 so’m</b></div>
+<a class="btn" href="#kurer" style="margin-top:18px">Kurer chaqirish</a></div>
+</div></div></section>
+
+<section class="sec" id="kurer"><div class="w">
+<h2 class="rv">Kurer chaqirish</h2>
+<p class="sub rv">Avval qaysi bozordagi Unex poshta kuri kelishini tanlang. Buyurtma to’g’ridan-to’g’ri shu bozor adminiga boradi.</p>
+<div class="card" id="cw"></div></div></section>
+
+<section class="sec alt" id="onlayn"><div class="w">
+<h2 class="rv">Onlayn chaqirish</h2>
+<p class="sub rv">Bozoringizdagi Unex poshtaning Telegramiga yozing yoki qo’ng’iroq qiling.</p>
+<div class="g3" id="onl"></div></div></section>
+
+<section class="sec" id="kabinet"><div class="w">
+<h2 class="rv">Adminlar kabineti</h2>
+<p class="sub rv">Har bir bozor uchun alohida kabinet: buyurtmalar shu yerda ko’rinadi va holati boshqariladi.</p>
+<div id="kb"></div></div></section>
+
+<section class="stat" id="stat"><div class="w">
+<div class="big"><div class="n"><span data-to="1117000">0</span>+</div><p>mijozning buyurtmasi manziliga yetkazildi</p></div>
+<div class="row">
+<div><b id="nr" data-to="13">0</b><span>hudud</span></div>
+<div><b id="np" data-to="46">0</b><span>manzil</span></div>
+<div><i>🛡️</i><br><span>Xavfsiz yetkazib berish</span></div>
+<div><i>⏱️</i><br><span>Tezkor xizmat</span></div>
+<div><i>🤝</i><br><span>Ishonch va sifat</span></div>
+</div></div></section>
+
+<footer><b>Unex Express</b>Har bir manzil biz bilan yaqin! · Narxlar boshlang'ich tarif bo'yicha hisoblangan.</footer>
+
+<script>
+const R=[["Toshkent",["Toshkent","Bek baraka","Abu sahiy","O'rikzor","Angren","Olmaliq"],440,115],["Sirdaryo",["Guliston"],410,150],["Jizzax",["Jizzax","Zomin","G'allaorol"],385,172],["Samarqand",["Samarqand","Kattaqo'rg'on","Ishtixon","Bulung'ur","Urgut","Pastdarg'om","Payariq","Zarafshon"],365,208],["Navoiy",["Navoiy","Karmana"],300,185],["Buxoro",["Buxoro","G'ijduvon","Kogon"],235,215],["Qoraqalpog'iston",["Nukus","Beruniy","Ellikqal'a"],110,95],["Xorazm",["Urganch","Xiva"],165,152],["Qashqadaryo",["Qarshi","Koson","Shahrisabz","Kitob","G'uzor"],355,268],["Surxondaryo",["Termiz","Denov","Sariosiyo","Jarqo'rg'on"],390,320],["Namangan",["Namangan","Chortoq","Uchqo'rg'on"],495,118],["Andijon",["Andijon","Asaka"],555,140],["Farg'ona",["Farg'ona","Marg'ilon","Rishton","Qo'qon"],505,165]];
+const $=s=>document.querySelector(s),fmt=n=>String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+const sel=$('#dst');
+sel.innerHTML=R.map(r=>`<optgroup label="${r[0]}">${r[1].map(p=>`<option>${p}</option>`).join('')}</optgroup>`).join('');
+let door=0,shown=25000;
+const DT=['Filialgacha','Shahar ichiga dostavka','Yashash tumanimgacha'];
+function calc(){
+ const w=parseFloat($('#kg').value)||1,kg=Math.max(1,Math.ceil(w)),ex=kg-1,bx=+$('#box').value||0,t=25000+ex*5000+(door?20000:0)+bx;
+ $('#bd').innerHTML=`<li><span>1 kg</span><b>25 000</b></li>`+(ex?`<li><span>Qo'shimcha ${ex} kg × 5 000</span><b>${fmt(ex*5000)}</b></li>`:'')+(door?`<li><span>${DT[door]}</span><b>20 000</b></li>`:'')+(bx?`<li><span>Karobkaga solib berish</span><b>${fmt(bx)}</b></li>`:'');
+ $('#rt2').textContent=`${sel.value} · ${kg} kg · ${DT[door].toLowerCase()}`;
+ const from=shown,t0=performance.now();shown=t;
+ (function f(n){const k=Math.min(1,(n-t0)/450);$('#tot').textContent=fmt(from+(t-from)*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0);
+}
+sel.onchange=calc;$('#box').onchange=calc;$('#kg').oninput=calc;
+$('#m').onclick=()=>{$('#kg').value=Math.max(1,Math.ceil(+$('#kg').value||1)-1);calc()};
+$('#p').onclick=()=>{$('#kg').value=Math.ceil(+$('#kg').value||1)+1;calc()};
+document.querySelectorAll('.seg button').forEach(b=>b.onclick=()=>{door=+b.dataset.d;document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x==b));calc()});
+calc();
+
+$('#chips').innerHTML=R.map((r,i)=>`<button class="chip" data-i="${i}">${r[0]}<small>${r[1].length}</small></button>`).join('');
+function show(i){
+ document.querySelectorAll('.chip').forEach((c,j)=>c.classList.toggle('on',i==j));
+ $('#pts').innerHTML=R[i][1].map((p,k)=>`<button class="pt" style="animation-delay:${k*60}ms" data-p="${p}"><span>📍</span>${p}</button>`).join('');
+}
+$('#chips').onclick=e=>{const b=e.target.closest('.chip');if(b)show(+b.dataset.i)};
+$('#pts').onclick=e=>{const b=e.target.closest('.pt');if(b){sel.value=b.dataset.p;calc();$('#tarif').scrollIntoView()}};
+show(0);
+
+$('#map').innerHTML=`<polygon class="out" points="40,80 120,40 200,85 260,130 330,150 400,108 470,88 570,100 595,150 545,185 480,195 445,235 425,300 385,350 330,325 300,272 250,252 200,205 130,172 60,132"/><polyline id="rt" pathLength="1" points="${R.map(r=>r[2]+','+r[3]).join(' ')}"/><circle class="pulse" cx="${R[0][2]}" cy="${R[0][3]}" r="9"/>`+
+ R.map((r,i)=>`<g class="nd" style="--d:${.5+i*.35}s"><circle cx="${r[2]}" cy="${r[3]}" r="${i?6:9}"/><text x="${r[2]}" y="${r[3]-13}" text-anchor="middle">${r[0]}</text></g>`).join('');
+
+$('#np').dataset.to=R.reduce((a,r)=>a+r[1].length,0);$('#nr').dataset.to=R.length;
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+ if(!e.isIntersecting)return;const t=e.target;t.classList.add('go','in');
+ t.querySelectorAll('[data-to]').forEach(c=>{const to=+c.dataset.to,t0=performance.now();(function f(n){const k=Math.min(1,(n-t0)/1800);c.textContent=fmt(to*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)});
+ io.unobserve(t);
+}),{threshold:.2});
+document.querySelectorAll('.rv,.mapbox,#stat').forEach(x=>io.observe(x));
+</script>
+
+<script>
+const D=[{id:'o',n:'O’rikzor bozori',t:'998991270144',a:'Kiyim-kechak bozori, 4-blok, 37-do’kon'},{id:'b',n:'Bek baraka bozori',t:'998991270170',a:''},{id:'a',n:'Abu sahiy bozori',t:'998991270125',a:'Ipodrom Park Center'}];
+let DB=null,US=null,adm=false,mk=D.slice(),ord=[],cs={s:1,m:null,ty:0},cab=0;
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),
+ ph=t=>'+'+t.slice(0,3)+' '+t.slice(3,5)+' '+t.slice(5,8)+' '+t.slice(8,10)+' '+t.slice(10),
+ tg=t=>'https://t.me/+'+t,
+ ST={n:'Yangi',a:'Qabul qilindi',w:'Kurer yo’lda',d:'Yetkazildi',x:'Bekor'},
+ sv=()=>{try{localStorage.o=JSON.stringify(ord);localStorage.m=JSON.stringify(mk.slice(3))}catch(e){}},
+ msg=o=>`Unex kurer chaqiruvi\nBozor: ${o.mn}\nBlok/qator: ${o.bl}\nDo’kon: ${o.sh}\nTuri: ${o.ty?'Shahar ichiga (20 000 so’m)':'Bozor ichida (bepul)'}${o.ty?'\nManzil: '+o.ad:''}\nIsm: ${o.nm}\nTel: +${o.tl}`;
+async function put(o){o.ts=Date.now();
+ if(DB){try{await DB.collection('orders').add(o);return 1}catch(e){return 0}}
+ o.id='l'+o.ts;ord.unshift(o);sv();drawK();return 1}
+function drawOn(){$('#onl').innerHTML=mk.map(m=>`<div class="card"><h3>${esc(m.n)}</h3><p>Unex poshta</p><p>📞 <b>${ph(m.t)}</b></p>${m.a?`<p>📍 ${esc(m.a)}</p>`:''}<p style="margin:10px 0 12px">Chaqiruv uchun Telegramga murojaat qiling.</p><a class="btn" target="_blank" rel="noopener" href="${tg(m.t)}">Telegramga yozish</a><a class="btn sc" href="tel:+${m.t}">Qo’ng’iroq</a></div>`).join('')}
+function drawC(){const c=$('#cw'),m=cs.m;
+ if(cs.s==1)c.innerHTML=`<h3>Qaysi bozordagi Unex poshta kuri kelsin?</h3><div class="g3" style="margin-top:16px">`+mk.map((x,i)=>`<button class="card mk" data-i="${i}"><h3>📍 ${esc(x.n)}</h3><p>Admin: <b>${ph(x.t)}</b></p>${x.a?`<p>${esc(x.a)}</p>`:''}<p>Shu bozor adminiga to’g’ridan-to’g’ri ulanasiz.</p></button>`).join('')+`</div>`;
+ if(cs.s==2){c.innerHTML=`<div class="ok" style="margin-top:0">📍 <b>${esc(m.n)}</b> · admin ${ph(m.t)} <button class="mini" id="bk">O’zgartirish</button></div>
+<div class="g2"><div><label>Blok yoki qator</label><input id="fb" placeholder="Masalan: 4-blok"><label>Do’kon raqami</label><input id="fs" placeholder="Masalan: 37"><label>Kurer turi</label><div class="sg"><button class="on" data-t="0">Bozor ichida · bepul</button><button data-t="1">Shahar ichiga +20 000</button></div></div>
+<div><label>Ismingiz</label><input id="fn"><label>Telefon</label><input id="fp" type="tel" placeholder="90 123 45 67"><div id="ad" style="display:none"><label>Yetkazish manzili</label><input id="fa" placeholder="Tuman, ko’cha, uy"></div></div></div>
+<p id="er" style="color:var(--red);margin-top:10px"></p><button class="btn" id="go">Kurer chaqirish</button>`;
+ $('#bk').onclick=()=>{cs.s=1;drawC()};
+ c.querySelectorAll('.sg button').forEach(b=>b.onclick=()=>{cs.ty=+b.dataset.t;c.querySelectorAll('.sg button').forEach(x=>x.classList.toggle('on',x==b));$('#ad').style.display=cs.ty?'block':'none'});
+ $('#go').onclick=send}
+ if(cs.s==3)c.innerHTML=`<div style="text-align:center"><div class="rad">🛵</div><b>Kurer qidirilmoqda…</b><p style="margin:8px 0">${esc(m.n)} adminiga yuborilmoqda</p></div>`;
+ if(cs.s==4){const o=cs.o;c.innerHTML=`<div class="ok"><b>✅ Buyurtma qabul qilindi</b>\n${cs.ok?esc(m.n)+' adminining kabinetiga tushdi.':'Buyurtma kabinetga avtomatik tushmadi. Pastdagi tugma orqali admin bilan bog’laning.'}</div><p>Kurer: <b>${esc(m.n)}</b> Unex poshta · <b>${ph(m.t)}</b></p><div class="ok" style="background:var(--bg2);border-color:var(--ln)">${esc(msg(o))}</div><a class="btn" target="_blank" rel="noopener" href="${tg(m.t)}">Telegramga yozish</a><a class="btn sc" href="tel:+${m.t}">Qo’ng’iroq</a><button class="btn sc" id="cp">Matnni nusxalash</button><button class="mini" id="nw">Yangi buyurtma</button>`;
+ $('#nw').onclick=()=>{cs.s=1;drawC()};
+ $('#cp').onclick=()=>{try{navigator.clipboard.writeText(msg(o)).then(()=>$('#cp').textContent='Nusxalandi',()=>{})}catch(e){}}}}
+async function send(){const g=i=>$('#'+i).value.trim();let tl=g('fp').replace(/\D/g,'');if(tl.length==9)tl='998'+tl;
+ const o={m:cs.m.id,mn:cs.m.n,bl:g('fb'),sh:g('fs'),ty:cs.ty,ad:cs.ty?g('fa'):'',nm:g('fn'),tl,st:'n'};
+ if(!o.bl||!o.sh||!o.nm||tl.length<12||(cs.ty&&!o.ad)){$('#er').textContent='Barcha maydonlarni to’ldiring (telefon to’liq bo’lsin).';return}
+ cs.o=o;cs.s=3;drawC();const r=await Promise.all([put(o),new Promise(x=>setTimeout(x,2400))]);cs.ok=r[0];cs.s=4;drawC()}
+function drawK(){const k=$('#kb');if(cab>=mk.length)cab=0;const m=mk[cab],os=ord.filter(o=>o.m==m.id);
+ k.innerHTML=`<div class="chips">${mk.map((x,i)=>`<button class="chip${i==cab?' on':''}" data-i="${i}">${esc(x.n)}<small>${ord.filter(o=>o.m==x.id&&o.st=='n').length}</small></button>`).join('')}</div><div class="card"><h3>${esc(m.n)} kabineti</h3><p>Admin: <b>${ph(m.t)}</b>${DB?'':' · demo rejim: ma’lumot faqat shu qurilmada saqlanadi'}</p>`+
+ (adm?(os.length?os.map(o=>`<div class="or"><div><b>${esc(o.nm)}</b> · ${esc(o.bl)}, ${esc(o.sh)}-do’kon<small>${o.ty?'Shahar ichiga: '+esc(o.ad):'Bozor ichida (bepul)'} · +${esc(o.tl)}</small></div><div><span class="pill${o.st=='n'?' n':''}">${ST[o.st]||''}</span><div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap">${['a','w','d','x'].map(s=>`<button class="mini" data-o="${esc(o.id)}" data-s="${s}">${ST[s]}</button>`).join('')}</div></div></div>`).join(''):'<p>Hozircha buyurtma yo’q.</p>'):'<p>Buyurtmalarni faqat sahifa egasi va Editor huquqli adminlar ko’ra oladi.</p>')+`</div>`+
+ (adm?`<div class="card" style="margin-top:16px"><h3>Yangi kabinet ochish</h3><p>Boshqa bozorda ishlaydigan Unex poshta uchun.</p><div class="g2"><div><label>Bozor nomi</label><input id="kn"><label>Admin telefoni</label><input id="kt" type="tel" placeholder="90 123 45 67"></div><div><label>Ofis joylashuvi</label><input id="ka"><button class="btn" id="kg" style="margin-top:14px">Kabinet yaratish</button></div></div></div>`:'')}
+$('#kb').onclick=async e=>{const c=e.target.closest('.chip'),b=e.target.closest('[data-o]');
+ if(c){cab=+c.dataset.i;drawK()}
+ if(b){const id=b.dataset.o,s=b.dataset.s;if(DB){try{await DB.collection('orders').doc(id).update({st:s})}catch(x){}}else{const o=ord.find(v=>v.id==id);if(o){o.st=s;sv();drawK()}}}
+ if(e.target.id=='kg'){const n=$('#kn').value.trim();let t=$('#kt').value.replace(/\D/g,'');if(t.length==9)t='998'+t;if(!n||t.length!=12){$('#kn').focus();return}
+  const m={n,t,a:$('#ka').value.trim()};cab=mk.length;
+  if(DB){try{await DB.collection('markets').add(m)}catch(x){cab=0}}else{m.id='m'+Date.now();mk.push(m);sv();draw()}}};
+$('#cw').onclick=e=>{const b=e.target.closest('.mk');if(b){cs.m=mk[+b.dataset.i];cs.s=2;cs.ty=0;drawC()}};
+function draw(){drawOn();if(cs.s==1)drawC();drawK()}
+(async()=>{draw();
+ try{DB=await claude.use('db');US=await claude.use('user')}catch(e){}
+ if(DB){try{adm=!!(US&&await US.canEdit())}catch(e){}
+  DB.collection('markets').onSnapshot(s=>{mk=D.concat(s.docs.map(d=>Object.assign({id:d.id},d.data())));draw()},()=>{});
+  if(adm)DB.collection('orders').orderBy('ts','desc').limit(100).onSnapshot(s=>{ord=s.docs.map(d=>Object.assign({id:d.id},d.data()));drawK()},()=>{});}
+ else{adm=true;try{ord=JSON.parse(localStorage.o||'[]');mk=D.concat(JSON.parse(localStorage.m||'[]'))}catch(e){}}
+ draw()})();
+</script>
+</body>
+</html>
